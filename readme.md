@@ -1,4 +1,4 @@
-# BFK (BrainF\*ck compiler)
+# BFK (Brain F\*ck compiler)
 
 A Brainfuck compiler written in node.js!
 
@@ -8,17 +8,9 @@ A Brainfuck compiler written in node.js!
 
     npm install -g bfk
 
-or
-
-    npm i -g bfk
-
 #### Local install
 
     npm install bfk
-
-or
-
-    npm i bfk
 
 # Usage
 
@@ -34,7 +26,7 @@ I prefer using global packages. Why?
 #### Local usage
 
     const bfk = require("bfk")
-    bfk.compile("Your Brain F*ck code")
+    bfk.compile("Path to Brain f*ck code program")
 
 # Examples
 
@@ -56,4 +48,4 @@ With "Hello World!" code inside
 
     Hello World!
 
-Notice that you don't even have to specify the file extension
+Notice that you don't even have to specify the file extension.
