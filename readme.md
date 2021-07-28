@@ -26,7 +26,7 @@ I prefer using global packages. Why?
 #### Local usage
 
     const bfk = require("bfk")
-    bfk.compile("Path to Brain f*ck code program")
+    bfk.compile("Path to Brain f*ck program")
 
 # Examples
 
