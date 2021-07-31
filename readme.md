@@ -46,6 +46,25 @@ With "Hello World!" code inside
 
 #### The output should be
 
-    Hello World!
+    H
+    E
+    L
+    L
+    O
+
+    W
+    O
+    R
+    L
+    D
+    !
+
+#### If you want to create a continous string just add -str after command
+
+    bfk helloworld -str
+
+#### The output should be
+
+    HELLO WORLD!
 
 Notice that you don't even have to specify the file extension.

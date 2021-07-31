@@ -1,6 +1,7 @@
 const fs = require('fs');
-exports.compile = async function (file) {
+exports.compile = async function (file, cmd) {
   try {
+    let toStr = cmd == '-str';
     const bfFileName = file.includes('.bf') ? file : file + '.bf';
     let program = await fs.readFileSync(bfFileName, 'utf-8');
     let block = Array(100).fill(0);
@@ -8,6 +9,7 @@ exports.compile = async function (file) {
     let isLooping = false;
     let loopStack = [];
     let innerLoops = 0;
+    let resString = '';
 
     for (i = 0; i < program.length; i++) {
       if (isLooping) {
@@ -18,7 +20,9 @@ exports.compile = async function (file) {
         }
         continue;
       }
-
+      if (resString && i == program.length - 1) {
+        console.log(resString);
+      }
       switch (program[i]) {
         case '+':
           block[pointer]++;
@@ -29,7 +33,11 @@ exports.compile = async function (file) {
         case ',':
           break;
         case '.':
-          console.log(String.fromCharCode(block[pointer]));
+          if (toStr) {
+            resString += String.fromCharCode(block[pointer]);
+          } else {
+            console.log(String.fromCharCode(block[pointer]));
+          }
           break;
         case '>':
           pointer++;
