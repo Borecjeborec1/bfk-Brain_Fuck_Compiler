@@ -1,6 +1,30 @@
 const fs = require('fs');
+const colors = require('colors');
+const path = require('path');
+
 exports.compile = async function (file, cmd) {
   try {
+    const dirPath = path.join(__dirname, '../package.json');
+    let JSONFileRes = fs.readFileSync(dirPath, 'utf-8');
+    if (!file || file == '-help') {
+      console.log(`Welcome in BFK!`.green.bold);
+      console.log();
+      console.log(`VERSION`.bold.white);
+      console.log(JSON.parse(JSONFileRes).version);
+      console.log();
+      console.log(`USAGE`.bold.white);
+      console.log(`>  bfk <path to your file>`);
+      console.log();
+      console.log(`COMMANDS`.bold.white);
+      console.log(`>  -help   Display help for BFK`);
+      console.log(`>  -v      Display version of BFK`);
+      //AD NEW COMMANDS
+      return;
+    }
+    if (file == '-v') {
+      console.log(JSON.parse(JSONFileRes).version);
+      return;
+    }
     let toStr = cmd == '-str';
     const bfFileName = file.includes('.bf') ? file : file + '.bf';
     let program = await fs.readFileSync(bfFileName, 'utf-8');
@@ -22,6 +46,9 @@ exports.compile = async function (file, cmd) {
       }
       if (resString && i == program.length - 1) {
         console.log(resString);
+      } else if (i == program.length - 1) {
+        console.log();
+        console.log('> Thank you for using', 'BFK!'.bold.cyan);
       }
       switch (program[i]) {
         case '+':
